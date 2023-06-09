@@ -7,9 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "vczb <viniciuszucatti@gmail.com>",
+  "author": "vczb <viniczb@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "git-commit-msg-linter": "^5.0.4"
+    "@types/node": "^20.2.5",
+    "git-commit-msg-linter": "^5.0.4",
+    "typescript": "^5.1.3"
   }
 }
