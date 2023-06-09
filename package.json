@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "vczb <viniciuszucatti@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "git-commit-msg-linter": "^5.0.4"
+  }
 }
