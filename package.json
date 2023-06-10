@@ -8,8 +8,8 @@
     "format": "eslint src/**/*.ts --fix",
     "prepare": "husky install",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "jest",
-    "test:staged": "jest"
+    "test": "jest --passWithNoTests",
+    "test:staged": "jest --passWithNoTests"
   },
   "keywords": [],
   "author": "vczb <viniczb@gmail.com>",
