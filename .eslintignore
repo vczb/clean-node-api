@@ -1,2 +1,5 @@
 node_modules
 dist
+coverage
+jest-unit-config.ts
+jest-integration-config.ts
