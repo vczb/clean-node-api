@@ -32,8 +32,8 @@ describe("SignUp Controller", () => {
     const httpRequest = {
       body: {
         email: "any_email@mail.com",
-        password: "password",
-        password_confirmation: "password_confirmation",
+        password: "123",
+        password_confirmation: "123",
       },
     };
     const httpResponse = sut.handle(httpRequest);
@@ -45,8 +45,8 @@ describe("SignUp Controller", () => {
     const httpRequest = {
       body: {
         name: "any_name",
-        password: "password",
-        password_confirmation: "password_confirmation",
+        password: "123",
+        password_confirmation: "123",
       },
     };
     const httpResponse = sut.handle(httpRequest);
@@ -59,7 +59,7 @@ describe("SignUp Controller", () => {
       body: {
         name: "any_name",
         email: "any_email@mail.com",
-        password_confirmation: "password_confirmation",
+        password_confirmation: "123",
       },
     };
     const httpResponse = sut.handle(httpRequest);
@@ -81,6 +81,22 @@ describe("SignUp Controller", () => {
       new MissingParamError("password_confirmation")
     );
   });
+  test("Should return 400 if no password_confirmation fail", () => {
+    const { sut } = makeSut();
+    const httpRequest = {
+      body: {
+        name: "any_name",
+        email: "any_email@mail.com",
+        password: "123",
+        password_confirmation: "321",
+      },
+    };
+    const httpResponse = sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(
+      new InvalidParamError("password_confirmation")
+    );
+  });
   test("Should return 400 if an invalid email is provided", () => {
     const { sut, emailValidatorStub } = makeSut();
     jest.spyOn(emailValidatorStub, "isValid").mockReturnValueOnce(false);
@@ -88,8 +104,8 @@ describe("SignUp Controller", () => {
       body: {
         name: "any_name",
         email: "invalid_email@mail.com",
-        password: "password",
-        password_confirmation: "password_confirmation",
+        password: "123",
+        password_confirmation: "123",
       },
     };
     const httpResponse = sut.handle(httpRequest);
@@ -103,8 +119,8 @@ describe("SignUp Controller", () => {
       body: {
         name: "any_name",
         email: "any_email@mail.com",
-        password: "password",
-        password_confirmation: "password_confirmation",
+        password: "123",
+        password_confirmation: "123",
       },
     };
     sut.handle(httpRequest);
@@ -119,8 +135,8 @@ describe("SignUp Controller", () => {
       body: {
         name: "any_name",
         email: "any_email@mail.com",
-        password: "password",
-        password_confirmation: "password_confirmation",
+        password: "123",
+        password_confirmation: "123",
       },
     };
     const httpResponse = sut.handle(httpRequest);
