@@ -7,9 +7,8 @@ export class BcryptAdapter implements Encrypter {
   constructor(salt: number) {
     this.salt = salt;
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async encrypt(value: string): Promise<string> {
-    await bcrypt.hash(value, this.salt);
-    return new Promise((resolve) => resolve(""));
+    const hashs = await bcrypt.hash(value, this.salt);
+    return new Promise((resolve) => resolve(hashs));
   }
 }
