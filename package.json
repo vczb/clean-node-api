@@ -19,6 +19,7 @@
   "author": "vczb <viniczb@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.2.5",
     "@types/validator": "^13.7.17",
@@ -34,6 +35,7 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "validator": "^13.9.0"
   }
 }
