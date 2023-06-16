@@ -12,11 +12,6 @@ export class AccountMongoRepository implements AddAccountRepository {
       _id: result.insertedId,
     });
 
-    const { _id, ...obj } = data;
-    return {
-      // @ts-expect-error
-      id: _id,
-      ...obj,
-    };
+    return MongoHelper.map(data);
   }
 }
