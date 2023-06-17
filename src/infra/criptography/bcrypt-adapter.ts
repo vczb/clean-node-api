@@ -4,7 +4,7 @@ import { Encrypter } from "../../data/protocols/encrypter";
 
 export class BcryptAdapter implements Encrypter {
   private readonly salt;
-  constructor(salt: number) {
+  constructor(salt = 12) {
     this.salt = salt;
   }
   async encrypt(value: string): Promise<string> {
