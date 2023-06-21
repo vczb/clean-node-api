@@ -1,5 +1,7 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 export default {
-  mongoUrl:
-    process.env.MONGO_URL || "mongodb://db2User:db2Pass@localhost:27017/db2",
+  mongoUrl: process.env.MONGO_URL,
   port: process.env.PORT || 5050,
 };

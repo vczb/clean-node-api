@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "start": "sucrase-node src/main/server.ts",
     "lint": "eslint src/**/*.ts",
@@ -43,6 +46,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fast-glob": "^3.2.12",
     "mongodb": "^5.6.0",
