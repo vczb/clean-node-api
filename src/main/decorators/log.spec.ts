@@ -10,17 +10,27 @@ interface SutTypes {
   controllerStub: Controller;
 }
 
+const HTTP_RESPONSE: HttpResponse = {
+  statusCode: 200,
+  body: {
+    ok: true,
+  },
+};
+
+const HTTP_REQUEST = {
+  body: {
+    email: "any_mail@mail.com",
+    name: "any_name",
+    password: "123",
+    password_confirmation: "123",
+  },
+};
+
 const makeController = (): Controller => {
   class ControllerStub implements Controller {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-      const httpResponse: HttpResponse = {
-        statusCode: 200,
-        body: {
-          ok: true,
-        },
-      };
-      return new Promise((resolve) => resolve(httpResponse));
+      return new Promise((resolve) => resolve(HTTP_RESPONSE));
     }
   }
   return new ControllerStub();
@@ -40,15 +50,14 @@ describe("LogControllerDecorator", () => {
     const { controllerStub, sut } = makeSut();
     const handleSpy = jest.spyOn(controllerStub, "handle");
 
-    const httpRequest = {
-      body: {
-        email: "any_mail@mail.com",
-        name: "any_name",
-        password: "123",
-        password_confirmation: "123",
-      },
-    };
-    await sut.handle(httpRequest);
-    expect(handleSpy).toHaveBeenCalledWith(httpRequest);
+    await sut.handle(HTTP_REQUEST);
+    expect(handleSpy).toHaveBeenCalledWith(HTTP_REQUEST);
+  });
+
+  test("should return the same result of the controller", async () => {
+    const { sut } = makeSut();
+
+    const httpResponse = await sut.handle(HTTP_REQUEST);
+    expect(httpResponse).toEqual(HTTP_RESPONSE);
   });
 });
