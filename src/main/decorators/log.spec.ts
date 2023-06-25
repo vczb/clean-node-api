@@ -32,7 +32,7 @@ const HTTP_REQUEST = {
 const makeLogErrorRepository = (): LogErrorRepository => {
   class LogErrorRepositoryStub implements LogErrorRepository {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async log(stack: string): Promise<void> {
+    async logError(stack: string): Promise<void> {
       return new Promise((resolve) => resolve());
     }
   }
@@ -88,7 +88,7 @@ describe("LogControllerDecorator", () => {
     jest
       .spyOn(controllerStub, "handle")
       .mockReturnValueOnce(new Promise((resolve) => resolve(error)));
-    const logSpy = jest.spyOn(logErrorRepositoryStub, "log");
+    const logSpy = jest.spyOn(logErrorRepositoryStub, "logError");
     await sut.handle(HTTP_REQUEST);
     expect(logSpy).toHaveBeenCalledWith(fakeError.stack);
   });
